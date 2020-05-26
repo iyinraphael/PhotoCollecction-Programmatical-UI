@@ -22,6 +22,7 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     var photoController: PhotoController?
     var themeHelper: ThemeHelper?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,18 +50,20 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(titleTextField)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            imageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
+            //imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
             
             addButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
             addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             
             titleTextField.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 10),
             titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            titleTextField.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80)
+            titleTextField.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         self.imageView = imageView
@@ -128,6 +131,8 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         title = photo.title
+        
+        setUpSubViews()
         
         imageView.image = UIImage(data: photo.imageData)
         titleTextField.text = photo.title
