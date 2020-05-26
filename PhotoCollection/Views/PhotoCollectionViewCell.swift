@@ -42,9 +42,11 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     func setUpSubviews() {
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
         
         let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
