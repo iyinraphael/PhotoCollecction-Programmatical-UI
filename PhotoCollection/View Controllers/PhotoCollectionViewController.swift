@@ -20,7 +20,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         setTheme()
     }
     
-    // MARK: UICollectionViewDataSource
+    // MARK: -UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoController.photos.count
@@ -85,5 +85,23 @@ class PhotoCollectionViewController: UICollectionViewController {
         default:
             break
         }
+    }
+}
+
+
+extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let edgeInsert = UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 10)
+        return edgeInsert
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 130, height: 160)
     }
 }
